@@ -19,7 +19,7 @@ jobs:
       - name: Set up Rust
         uses: actions/setup-rust@v1
         with:
-          rust-version: 1.69  # Change this to the Rust version you're using
+          rust-version: 1.88.0-nightly
 
       - name: Install dependencies
         run: |
