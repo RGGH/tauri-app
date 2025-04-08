@@ -1,4 +1,4 @@
-# Tauri + Vanilla JS/HTML
+# Tauri + Vanilla JS/HTML [![Test](https://github.com/RGGH/tauri-app/actions/workflows/ci.yml/badge.svg)](https://github.com/RGGH/tauri-app/actions/workflows/ci.yml)
 
 ### EdgeKraft Desktop 
 
