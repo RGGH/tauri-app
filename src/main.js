@@ -1,19 +1,20 @@
 const { invoke } = window.__TAURI__.tauri;
-
-let greetInputEl;
-let greetMsgEl;
-
-async function greet() {
-  greetMsgEl.textContent = await invoke("greet", { name: greetInputEl.value });
-}
-
 window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
+  const greetInputEl = document.querySelector("#greet-input");
+  const greetMsgEl = document.querySelector("#greet-msg");
 
+  // Listen for the form submission
   document.querySelector("#greet-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    greet();
+    e.preventDefault(); // Prevent default form submission
+
+    const userInput = greetInputEl.value; // Get the input value
+
+    // Pass the user input to the Rust function when the form is submitted
+    invoke("my_custom_command2", { invokeMessage: userInput }).then((response) => {
+      console.log("Rust function2 was called with response:", response);
+    });
+
+    greet(); // Call any additional greeting logic if needed
   });
 
   // ✅ Call `my_custom_command` when the "call-rust" button is clicked
@@ -22,11 +23,4 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log("Rust function was called");
     });
   });
-
-	document.getElementById("call-rust2").addEventListener("click", () => {
-  invoke("my_custom_command2", { invokeMessage: "Moo" }).then((response) => {
-    console.log("Rust function2 was called with response:", response);
-  });
-  });
 });
-
