@@ -5,21 +5,6 @@
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdgeKraft AI</title>
-      <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    #myDropdown {
-      width: 50%;
-      max-width: 300px;
-      margin: 1rem auto;
-      display: block;
-      padding: 0.5rem;
-    }
-  </style>
     <script type="module" src="/main.js" defer></script>
   </head>
 
@@ -43,7 +28,7 @@
         </a>
       </div>
       <p>AI with MCP Servers</p>
-
+      <button id="call-rust" class="custom-button">Call Rust Function</button>
 
       <form class="row" id="greet-form">
         <input id="greet-input" placeholder="Enter a query" />
@@ -51,14 +36,13 @@
       </form>
       <p id="greet-msg"></p>
 
-        <label for="myDropdown">Choose an option:</label>
+        <label for="myDropdown">Choose an LLM provider:</label>
   <select id="myDropdown">
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <option value="option3">Option 3</option>
+    <option value="option1">Ollama</option>
+    <option value="option2">OpenAI</option>
+    <option value="option3">Claude</option>
   </select>
 
-  <p id="selectedValue">Selected: None</p>
     </main>
   </body>
 </html>
