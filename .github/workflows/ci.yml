@@ -1,40 +1,16 @@
-name: Tauri App CI/CD
-
-on:
-  push:
-    branches:
-      - main  # Trigger on push to the main branch
-  pull_request:
-    branches:
-      - main  # Trigger on PR to the main branch
+name: Test
+on: [push, pull_request]
 
 jobs:
-  build:
+  test:
+    name: cargo test
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Rust
-        uses: actions/setup-rust@v3
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: actions-use/setup-rust@stable
         with:
-          rust-version: 1.88.0-nightly
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.0-dev libssl-dev
-          npm install -g pnpm # Install pnpm globally (if using pnpm)
-          pnpm install  # Install project dependencies
-
-      - name: Build the app
-        run: |
-          pnpm tauri build  # Run the Tauri build command
-
-      - name: Upload Artifacts (Optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: tauri-app
-          path: target/release/bundle/  # Adjust the path to where the app is built
-
+          toolchain: stable
+          components: rustfmt, clippy
+      - run: rustup --version
+      - run: cargo --version
