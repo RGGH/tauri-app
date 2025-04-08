@@ -22,5 +22,11 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log("Rust function was called");
     });
   });
+
+	document.getElementById("call-rust2").addEventListener("click", () => {
+  invoke("my_custom_command2", { invokeMessage: "Moo" }).then((response) => {
+    console.log("Rust function2 was called with response:", response);
+  });
+  });
 });
 

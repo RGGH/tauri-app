@@ -12,9 +12,16 @@ fn my_custom_command() {
   println!("I was invoked from JS!");
 }
 
+#[tauri::command]
+fn my_custom_command2(invokeMessage: String) {
+    // Process the message
+    let res = format!("Processed: {}", invokeMessage);
+    println!("{:?}", res);
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet,my_custom_command])
+        .invoke_handler(tauri::generate_handler![greet,my_custom_command,my_custom_command2])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
