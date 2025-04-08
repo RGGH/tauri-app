@@ -37,3 +37,4 @@ jobs:
         with:
           name: tauri-app
           path: target/release/bundle/  # Adjust the path to where the app is built
+
