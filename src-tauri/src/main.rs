@@ -3,6 +3,10 @@
 
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
 
+use client::llm_get;
+
+mod client;
+
 // Learn more about Tauri commands at https://v1.tauri.app/v1/guides/features/command
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -22,7 +26,7 @@ fn my_custom_command2(invoke_message: String) {
 }
 
 fn main() {
-
+    // let _ = llm_get(); <--- todo!
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let close = CustomMenuItem::new("close".to_string(), "Close");
     let submenu = Submenu::new("File", Menu::new().add_item(quit).add_item(close));
