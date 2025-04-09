@@ -71,7 +71,7 @@ pub fn check_first_login(conn: &Connection) -> SqliteResult<bool> {
 }
 
 
-
+#[tauri::command]
 async fn register_user(
   conn: &Connection, 
   credentials: LoginCredentials
@@ -98,6 +98,7 @@ async fn register_user(
   })
 }
 
+#[tauri::command]
 async fn verify_login(
   conn: &Connection, 
   credentials: LoginCredentials
@@ -141,6 +142,7 @@ async fn verify_login(
       }
   }
 }
+
 
 
 

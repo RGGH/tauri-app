@@ -2,10 +2,12 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
-
+use tauri_app::{create_app_dir, initialize_database, AppState};
 use client::llm_get;
 
+
 mod client;
+
 
 // Learn more about Tauri commands at https://v1.tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -27,7 +29,14 @@ async fn ask_llm(invoke_message: String)->String{
 }
 
 fn main() {
-    // let _ = llm_get(); <--- todo!
+
+  let app_dir = create_app_dir();
+  let db_path = app_dir.join("app.db");
+  let conn = rusqlite::Connection::open(db_path).expect("Failed to open database");
+  initialize_database(&conn).expect("Failed to initialize database");
+    
+
+
     let quit = CustomMenuItem::new("login".to_string(), "Login");
     let close = CustomMenuItem::new("close".to_string(), "Close");
     let submenu = Submenu::new("Start", Menu::new().add_item(quit).add_item(close));
