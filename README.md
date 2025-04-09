@@ -2,7 +2,8 @@
 
 ### EdgeKraft Desktop 
 
-![image](https://github.com/user-attachments/assets/cf73b31b-1820-480a-8a66-96e72d0381c8)
+![image](https://github.com/user-attachments/assets/65fd3978-1840-4efc-991c-353f493597a1)
+
 
 
 
