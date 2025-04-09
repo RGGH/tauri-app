@@ -10,8 +10,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const userInput = greetInputEl.value; // Get the input value
 
     // Pass the user input to the Rust function when the form is submitted
-    invoke("my_custom_command2", { invokeMessage: userInput }).then((response) => {
+    invoke("ask_llm", { invokeMessage: userInput }).then((response) => {
       console.log("Rust function2 was called with response:", response);
+      document.getElementById('result-display').textContent = response;
     });
 
     greet(); // Call any additional greeting logic if needed
