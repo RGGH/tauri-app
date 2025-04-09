@@ -20,8 +20,6 @@ fn my_custom_command() {
 
 #[tauri::command]
 async fn ask_llm(invoke_message: String)->String{
-    // Process the message
-    let prompt = format!("✅ This passed to the LLM: {}", invoke_message);
     let res = llm_get(invoke_message).await;
     println!("{}",res);
     res
