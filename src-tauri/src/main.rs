@@ -13,9 +13,10 @@ fn greet(name: &str) -> String {
 }
 
 #[tauri::command]
-fn my_custom_command() {
-    println!("Loading EdgeKraft browser...");
+fn my_custom_command(app_handle: tauri::AppHandle) {
+    tauri::api::shell::open(&app_handle.shell_scope(), "https://example.com".to_string(), None).unwrap();
 }
+
 
 #[tauri::command]
 async fn ask_llm(invoke_message: String) -> String {
