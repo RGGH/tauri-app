@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // ✅ Call `my_custom_command` when the "call-rust" button is clicked
-  document.getElementById("call-rust").addEventListener("click", () => {
+  document.getElementById("use-browser").addEventListener("click", () => {
     invoke("my_custom_command").then(() => {
       console.log("Rust function was called");
     });
